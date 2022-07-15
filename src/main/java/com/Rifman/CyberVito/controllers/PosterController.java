@@ -71,4 +71,12 @@ public class PosterController {
 
         return "redirect:/post";
     }
+
+    @PostMapping("/post/{id}/remove")
+    public String ticketDelete(@PathVariable(value = "id") long id, Model model){
+        Post post = postRepository.findById(id).orElseThrow();
+        postRepository.delete(post);
+
+        return "redirect:/post";
+    }
 }
